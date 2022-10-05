@@ -1,5 +1,4 @@
 <script>
-
     function Transaction(vendor, amount, date) {
         this.vendor = vendor;
         this.amount = amount;
@@ -33,11 +32,12 @@
 </script>
 
 <template>
-<ul>
-    <li>
-        <span>{this.name}<span>
-        <span>{this.surname}<span>
-        <span>{this.card_digits}<span>
-        <span>{this.balance}<span>
-    <li>
+    <ul>
+        <li>
+            <span>{this.name}</span>
+            <span>{this.surname}</span>
+            <span>{this.card_digits}</span>
+            <span>{this.balance}</span>
+        </li>
+    </ul>
 </template>
