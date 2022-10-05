@@ -10,7 +10,7 @@
         this.year = year;
     }
 
-    function User(name, surname, card_digits, exp_date, balance) = {
+    function User(name, surname, card_digits, exp_date, balance) {
         this.name = name;
         this.surname = surname;
         this.card_digits = card_digits;
