@@ -1,6 +1,10 @@
-<script>
-    // import UserObject from '../components/UserObject.vue'    
+<script lang="ts">
+    // import UserObject from '../components/UserObject.vue'   
+    import TableLite from "vue3-table-lite/ts"
     export default {
+        components: {
+            TableLite
+        },
         data() {
             return {
                 name: "Hannah",
@@ -12,7 +16,36 @@
                     {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
                     {vendor: "CVS", amount: 1.25, date: '01/15/2022'}
                 ],
-                num_transactions: 0,
+                colNames: [
+                    {
+                    label: "Vendor",
+                    field: "vendor",
+                    width: "10%",
+                    headerStyles: {"background": "black", "color": "white"},
+                    columnStyles: {"background": "gray", "color": "white"},
+                    sortable: true,
+                    isKey: true,
+                    },
+                    {
+                    label: "Amount",
+                    field: "amount",
+                    width: "10%",
+                    headerStyles: {"background": "black", "color": "white"},
+                    columnStyles: {"background": "gray", "color": "white"},
+                    sortable: true,
+                    isKey: true,
+                    },
+                    {
+                    label: "Date",
+                    field: "date",
+                    width: "10%",
+                    headerStyles: {"background": "black", "color": "white"},
+                    columnStyles: {"background": "gray", "color": "white"},
+                    sortable: true,
+                    isKey: true,
+                    }
+                ],
+                num_transactions: 2
             }
         },
         // methods : {
@@ -25,29 +58,11 @@
 </script>
 
 <template>
+    <div>
     <h1 text-align="center">reporting page</h1>
-    <body>
-        <ul>
-            <li>
-                <span>{{this.name}}</span>
-            </li>
-            <li>
-                <span>{{this.surname}}</span>
-            </li>
-            <li>
-                <span>{{this.card_digits}}</span>
-            </li>
-            <li>
-                <span>{{this.balance}}</span>
-            </li>
-            <li>
-                <div>
-                    <b-table :items="this.transactions"></b-table>
-                </div>
-                <ul v-for="t in this.transactions">
-                    <li>{{t.vendor}}</li>
-                </ul>
-            </li>
-        </ul> 
-    </body>
+    <p>Name: {{name}} {{surname}}</p>
+    <p>Last 4 digits: {{card_digits}}</p>
+    <p>Balance: {{balance}}</p>
+    <table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite>
+    </div>
 </template>
