@@ -1,42 +1,64 @@
 <script>
-    // let function Transaction(vendor, amount, date) {
-    //     this.vendor = vendor,
-    //     this.amount = amount,
-    //     this.date = date,
-    // }
-    // let function Date(day, month, year) {
-    //     this.day = day,
-    //     this.month = month,
-    //     this.year = year,
-    // }
-
-    // let function User(name, surname, card_digits, exp_date, balance) {
-    //     this.name = name,
-    //     this.surname = surname,
-    //     this.card_digits = card_digits,
-    //     this.exp_date = exp_date,
-    //     this.balance = balance,
-    //     this.transactions = [],
-    //     this.num_transactions = 0,
-
-        // add_transaction = function(transaction) {
-        //     this.transactions = this.transactions.push(transaction);
-        //     this.num_transactions++;
-        // }
-    // }
+    import TableLite from "vue3-table-lite"
     export default {
+        components: {
+            TableLite,
+            // UserObject
+        },
         data() {
-            // return User("Hannah", "Kim", '4030', Date(25, 1, 2002), 233.21)
-        
             return {
-                name: "Helen",
+                name: "Hannah",
                 surname: "Kim",
-                card_digits: '4030',
-                exp_date: '25/01/2002',
+                card_digits: '4020',
+                exp_date: '01/26/2032',
                 balance: 233.21,
+                transactions: [
+                    {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
+                    {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
+                    {vendor: "BC Bookstore", amount: 14.30, date:'02/02/2022'}
+                ],
+                colNames: [
+                    {
+                    label: "Vendor",
+                    field: "vendor",
+                    width: "10%",
+                    headerStyles: {"background": "black", "color": "white"},
+                    columnStyles: {"background": "gray", "color": "white"},
+                    sortable: true,
+                    isKey: true,
+                    },
+                    {
+                    label: "Amount",
+                    field: "amount",
+                    width: "10%",
+                    headerStyles: {"background": "black", "color": "white"},
+                    columnStyles: {"background": "gray", "color": "white"},
+                    sortable: true,
+                    isKey: true,
+                    },
+                    {
+                    label: "Date",
+                    field: "date",
+                    width: "10%",
+                    headerStyles: {"background": "black", "color": "white"},
+                    columnStyles: {"background": "gray", "color": "white"},
+                    sortable: true,
+                    isKey: true,
+                    }
+                ],
+                num_transactions: 3
             }
-        }
+        },
     }
-
-
 </script>
+
+<template>
+    <div>
+    <!-- <h1 text-align="center">Reporting Page</h1> -->
+    <p>Name: {{this.name}} {{this.surname}}</p>
+    <p>Last 4 digits of card: {{this.card_digits}}</p>
+    <p>Expire: {{this.exp_date}}</p>
+    <p>Balance: ${{this.balance}}</p>
+    <!-- <table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite> -->
+    </div>
+</template>
