@@ -80,12 +80,11 @@
 </script>
 
 <template>
-    <div>
-    <h1 text-align="center">reporting page</h1>
-    <p>Name: {{name}} {{surname}}</p>
-    <p>Last 4 digits: {{card_digits}}</p>
-    <p>Balance: {{balance}}</p>
-    <table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite>
+    
+    <main>
+        <h1 text-align="center">Reporting Page</h1>
+        <UserObject />
+    </main>
     <Pie
         :chart-options="pieParams.chartOptions"
         :chart-data="pieData"
@@ -94,5 +93,5 @@
         :width="pieParams.width"
         :height="pieParams.height"
     />
-    </div>
+    
 </template>
