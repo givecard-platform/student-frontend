@@ -1,11 +1,16 @@
 <script setup lang="ts">
-//import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router'
 //import HelloWorld from './components/HelloWorld.vue'
 import ReportingView from './views/ReportingView.vue'
+import SpendingView from './views/SpendingView.vue'
 </script>
 
 <template>
-  <ReportingView />
+  <nav>
+        <RouterLink to="/">Reporting</RouterLink>
+        <RouterLink to="/about">Spending</RouterLink>
+  </nav>
+  <RouterView />
 </template>
 
 <style scoped>

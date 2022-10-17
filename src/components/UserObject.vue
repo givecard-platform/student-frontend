@@ -1,5 +1,5 @@
-<script>
-    import TableLite from "vue3-table-lite"
+<script lang="ts">
+    import TableLite from "vue3-table-lite/ts"
     export default {
         components: {
             TableLite,
@@ -55,10 +55,10 @@
 <template>
     <div>
     <!-- <h1 text-align="center">Reporting Page</h1> -->
-    <p>Name: {{this.name}} {{this.surname}}</p>
-    <p>Last 4 digits of card: {{this.card_digits}}</p>
-    <p>Expire: {{this.exp_date}}</p>
-    <p>Balance: ${{this.balance}}</p>
+    <p>Name: {{name}} {{surname}}</p>
+    <p>Last 4 digits of card: {{card_digits}}</p>
+    <p>Expire: {{exp_date}}</p>
+    <p>Balance: ${{balance}}</p>
     <!-- <table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite> -->
     </div>
 </template>
