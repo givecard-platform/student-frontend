@@ -1,9 +1,16 @@
 <script lang="ts">
-    // import UserObject from '../components/UserObject.vue'   
+    import UserObject from '../components/UserObject.vue'   
     import TableLite from "vue3-table-lite/ts"
+    import { Pie } from 'vue-chartjs'
+    import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } from 'chart.js'
+
+    ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
+
     export default {
         components: {
-            TableLite
+            TableLite,
+            UserObject,
+            Pie
         },
         data() {
             return {
@@ -12,6 +19,21 @@
                 card_digits: '4020',
                 exp_date: '01/26/2032',
                 balance: 233.21,
+                pieParams: {
+                    chartLoaded: true,
+                    chartId: 'pie-chart',
+                    chartOptions: {responsive: true},
+                    datasetIdKey: 'label',
+                    width: 40,
+                    height: 40
+                },
+                pieData: {
+                    labels: [ 'Food', 'Utilities', 'Other'],
+                    datasets: [{
+                        data: [40, 20, 12] ,
+                        backgroundColor: ['#41B883', '#E46651', '#00D8FF']
+                        }]
+                },
                 transactions: [
                     {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
                     {vendor: "CVS", amount: 1.25, date: '01/15/2022'}
@@ -47,7 +69,7 @@
                 ],
                 num_transactions: 2
             }
-        },
+        }
         // methods : {
         //     add_transaction({vendor: v, amount: a, date: d,}) {
         //         this.transactions = this.transactions.push({vendor: v, amount: a, date: d,});
@@ -64,5 +86,13 @@
     <p>Last 4 digits: {{card_digits}}</p>
     <p>Balance: {{balance}}</p>
     <table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite>
+    <Pie
+        :chart-options="pieParams.chartOptions"
+        :chart-data="pieData"
+        :chart-id="pieParams.chartId"
+        :dataset-id-key="pieParams.datasetIdKey"
+        :width="pieParams.width"
+        :height="pieParams.height"
+    />
     </div>
 </template>
