@@ -1,17 +1,21 @@
-<script lang="ts">
-    import TableLite from "vue3-table-lite/ts"
+<script>
+    import TableLite from "vue3-table-lite"
     export default {
         components: {
             TableLite,
             // UserObject
         },
+        // emits: ['send_name'],
+        // created() {
+        //     this.$emit('send_name', this.name),
+        // },
         data() {
             return {
-                name: "Hannah",
-                surname: "Kim",
-                card_digits: '4020',
-                exp_date: '01/26/2032',
-                balance: 233.21,
+                name: "Heather",
+                surname: "Lee",
+                card_digits: '2543',
+                exp_date: '10/26/2029',
+                balance: 83.21,
                 transactions: [
                     {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
                     {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
@@ -54,11 +58,9 @@
 
 <template>
     <div>
-    <!-- <h1 text-align="center">Reporting Page</h1> -->
-    <p>Name: {{name}} {{surname}}</p>
-    <p>Last 4 digits of card: {{card_digits}}</p>
-    <p>Expire: {{exp_date}}</p>
-    <p>Balance: ${{balance}}</p>
-    <!-- <table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite> -->
+    <p>Name: {{this.name}} {{this.surname}}</p>
+    <p>Last 4 digits of card: {{this.card_digits}}</p>
+    <p>Expire: {{this.exp_date}}</p>
+    <p>Balance: ${{this.balance}}</p>
     </div>
 </template>
