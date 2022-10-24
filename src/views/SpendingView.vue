@@ -3,7 +3,6 @@
     import TableLite from "vue3-table-lite/ts"
     import { Pie } from 'vue-chartjs'
     import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale } from 'chart.js'
-
     ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale)
     export default {
         components: {
@@ -13,17 +12,11 @@
         },
         data() {
             return {
-                /*
-                name: UserObject.name,
-                transactions: UserObject.transactions,
-                colNames: UserObject.colnames,
-                num_transactions: UserObject.num_transactions,
-                */
                //copied data here, since the UserObject was not working
                 name: "Hannah",
                 surname: "Kim",
                 card_digits: '4020',
-                exp_date: '01/26/2032',
+                exp_date: '01/27/2032',
                 balance: 233.21,
                 transactions: [
                     {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
@@ -35,7 +28,7 @@
                     label: "Vendor",
                     field: "vendor",
                     width: "10%",
-                    headerStyles: {"background": "black", "color": "white"},
+                    headerStyles: {"background": "purple", "color": "white"},
                     columnStyles: {"background": "gray", "color": "white"},
                     sortable: true,
                     isKey: true,
@@ -44,7 +37,7 @@
                     label: "Amount",
                     field: "amount",
                     width: "10%",
-                    headerStyles: {"background": "black", "color": "white"},
+                    headerStyles: {"background": "purple", "color": "white"},
                     columnStyles: {"background": "gray", "color": "white"},
                     sortable: true,
                     isKey: true,
@@ -53,7 +46,7 @@
                     label: "Date",
                     field: "date",
                     width: "10%",
-                    headerStyles: {"background": "black", "color": "white"},
+                    headerStyles: {"background": "purple", "color": "white"},
                     columnStyles: {"background": "gray", "color": "white"},
                     sortable: true,
                     isKey: true,
@@ -85,7 +78,8 @@
     
     <main>
         <h1 text-align="center">Budget</h1>
-        <UserObject/>
+        <!-- <UserObject @send_name="(n) => name = n" @send_surname="(s) => surname = s" /> -->
+            <UserObject/>
         <div>
             <p>{{name}}</p>
             <table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite>
