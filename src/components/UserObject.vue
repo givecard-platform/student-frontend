@@ -1,14 +1,5 @@
 <script>
-    import TableLite from "vue3-table-lite"
     export default {
-        components: {
-            TableLite,
-            // UserObject
-        },
-        // emits: ['send_name'],
-        // created() {
-        //     this.$emit('send_name', this.name),
-        // },
         data() {
             return {
                 name: "Heather",
@@ -52,6 +43,17 @@
                 ],
                 num_transactions: 3
             }
+        },
+        emits: ['send_name', 'send_surname', 'send_digits', 'send_date', 'send_balance', 'send_trans', 'send_colNames', 'send_num_trans'],
+        created() {
+            this.$emit('send_name', this.name),
+            this.$emit('send_surname', this.surname),
+            this.$emit('send_digits', this.card_digits),
+            this.$emit('send_date', this.exp_date),
+            this.$emit('send_balance', this.balance),
+            this.$emit('send_trans', this.transactions),
+            this.$emit('send_colNames', this.colNames),
+            this.$emit('send_num_t', this.num_transactions)
         },
     }
 </script>
