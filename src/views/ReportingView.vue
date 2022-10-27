@@ -63,7 +63,16 @@
     
     <main>
         <h1 text-align="center">Reporting Page</h1>
-        <UserObject />
+        
+        <!-- getting user data  -->
+        <UserObject @send_name="n => name = n" 
+            @send_surname="s => surname = s" 
+            @send_digits="d => card_digits = d"
+            @send_date="d => exp_date = d"
+            @send_balance="b => balance = b"
+            @send_trans="t => transactions = t"
+            @send_colNames="c => colNames = c"
+            @send_num_trans="n => num_transactions = n"/>
     </main>
     
 </template>
