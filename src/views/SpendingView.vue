@@ -137,8 +137,16 @@
     
     <main>
         <h1 text-align="center">Budget</h1>
-        <!-- <UserObject @send_name="(n) => name = n" @send_surname="(s) => surname = s" /> -->
-            <UserObject/>
+        <!-- getting user data  -->
+        <UserObject @send_name="n => name = n" 
+            @send_surname="s => surname = s" 
+            @send_digits="d => card_digits = d"
+            @send_date="d => exp_date = d"
+            @send_balance="b => balance = b"
+            @send_trans="t => transactions = t"
+            @send_colNames="c => colNames = c"
+            @send_num_trans="n => num_transactions = n"/>
+
         <div>
             <p>{{name}}</p>
             <!--<table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite> -->
