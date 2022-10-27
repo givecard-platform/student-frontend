@@ -1,4 +1,5 @@
 <script>
+    import json_data from './transactions.json'
     export default {
         data() {
             return {
@@ -7,6 +8,7 @@
                 card_digits: '2543',
                 exp_date: '10/26/2029',
                 balance: 83.21,
+                // transactions: json_data,
                 transactions: [
                     {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
                     {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
