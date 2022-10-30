@@ -3,12 +3,14 @@ import { RouterLink, RouterView } from 'vue-router'
 //import HelloWorld from './components/HelloWorld.vue'
 import ReportingView from './views/ReportingView.vue'
 import SpendingView from './views/SpendingView.vue'
+import DataView from './views/DataView.vue'
 </script>
 
 <template>
   <nav>
         <RouterLink to="/">Reporting</RouterLink>
         <RouterLink to="/about">Spending</RouterLink>
+        <RouterLink to="/testing_async">Testing</RouterLink>
   </nav>
   <RouterView />
 </template>
