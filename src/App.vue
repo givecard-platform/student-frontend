@@ -1,14 +1,26 @@
 <script setup lang="ts">
-//import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router'
 //import HelloWorld from './components/HelloWorld.vue'
 import ReportingView from './views/ReportingView.vue'
+import SpendingView from './views/SpendingView.vue'
+import './../node_modules/Bulma/CSS/bulma.css'
+import DataView from './views/DataView.vue' //was actually required
 </script>
 
 <template>
-  <ReportingView />
+<figure class="image is-128x128">
+  <img src="https://bulma.io/images/placeholders/128x128.png">
+</figure>
+  <nav>
+    <RouterLink to="/">Reporting</RouterLink>
+    <RouterLink to="/about">Spending</RouterLink>
+    <RouterLink to="/testing_async">Testing</RouterLink>
+  </nav>
+  <RouterView />
 </template>
 
 <style scoped>
+
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -21,9 +33,12 @@ header {
 
 nav {
   width: 100%;
+  display: inline;
   font-size: 12px;
-  text-align: center;
+  text-align: left;
   margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 nav a.router-link-exact-active {

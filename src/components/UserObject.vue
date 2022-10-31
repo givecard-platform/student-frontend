@@ -1,22 +1,18 @@
-<script lang="ts">
-    import UserObject from '../components/UserObject.vue'   
-    import TableLite from "vue3-table-lite/ts"
-
+<script>
+    //import json_data from './transactions.json'
     export default {
-        components: {
-            TableLite,
-            UserObject
-        },
         data() {
             return {
-                name: "Hannah",
-                surname: "Kim",
-                card_digits: '4020',
-                exp_date: '01/26/2032',
-                balance: 233.21,
+                name: "Heather",
+                surname: "Lee",
+                card_digits: '2543',
+                exp_date: '10/26/2029',
+                balance: 83.21,
+                // transactions: json_data,
                 transactions: [
                     {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
-                    {vendor: "CVS", amount: 1.25, date: '01/15/2022'}
+                    {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
+                    {vendor: "BC Bookstore", amount: 14.30, date:'02/02/2022'}
                 ],
                 colNames: [
                     {
@@ -47,32 +43,28 @@
                     isKey: true,
                     }
                 ],
-                num_transactions: 2
+                num_transactions: 3
             }
-        }
-        // methods : {
-        //     add_transaction({vendor: v, amount: a, date: d,}) {
-        //         this.transactions = this.transactions.push({vendor: v, amount: a, date: d,});
-        //         this.num_transactions++;
-        //     }
-        // }
+        },
+        emits: ['send_name', 'send_surname', 'send_digits', 'send_date', 'send_balance', 'send_trans', 'send_colNames', 'send_num_trans'],
+        created() {
+            this.$emit('send_name', this.name),
+            this.$emit('send_surname', this.surname),
+            this.$emit('send_digits', this.card_digits),
+            this.$emit('send_date', this.exp_date),
+            this.$emit('send_balance', this.balance),
+            this.$emit('send_trans', this.transactions),
+            this.$emit('send_colNames', this.colNames),
+            this.$emit('send_num_t', this.num_transactions)
+        },
     }
 </script>
 
 <template>
-    
-    <main>
-        <h1 text-align="center">Reporting Page</h1>
-        
-        <!-- getting user data  -->
-        <UserObject @send_name="n => name = n" 
-            @send_surname="s => surname = s" 
-            @send_digits="d => card_digits = d"
-            @send_date="d => exp_date = d"
-            @send_balance="b => balance = b"
-            @send_trans="t => transactions = t"
-            @send_colNames="c => colNames = c"
-            @send_num_trans="n => num_transactions = n"/>
-    </main>
-    
+    <div>
+    <p>Name: {{this.name}} {{this.surname}}</p>
+    <p>Last 4 digits of card: {{this.card_digits}}</p>
+    <p>Expire: {{this.exp_date}}</p>
+    <p>Balance: ${{this.balance}}</p>
+    </div>
 </template>
