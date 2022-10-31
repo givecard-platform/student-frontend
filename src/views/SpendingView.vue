@@ -147,7 +147,7 @@
             @send_colNames="c => colNames = c"
             @send_num_trans="n => num_transactions = n"/>
 
-        <div>
+        <div class="box">
             <p>{{name}}</p>
             <!--<table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite> -->
             <table-lite style="color:green;" :columns="MCCtable.columns" :rows="MCCtable.rows"
@@ -164,3 +164,7 @@
     </main>
     
 </template>
+
+<style>
+
+</style>

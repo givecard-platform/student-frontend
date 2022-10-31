@@ -1,5 +1,5 @@
 <script>
-    import json_data from './transactions.json'
+    //import json_data from './transactions.json'
     export default {
         data() {
             return {
