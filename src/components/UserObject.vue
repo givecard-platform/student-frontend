@@ -1,5 +1,5 @@
 <script>
-    //import json_data from './transactions.json'
+    import json_data from './transactions.json'
     export default {
         data() {
             return {
@@ -8,16 +8,16 @@
                 card_digits: '2543',
                 exp_date: '10/26/2029',
                 balance: 83.21,
-                // transactions: json_data,
-                transactions: [
-                    {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
-                    {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
-                    {vendor: "BC Bookstore", amount: 14.30, date:'02/02/2022'}
-                ],
+                transactions: json_data.transactions,
+                // transactions: [
+                //     {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
+                //     {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
+                //     {vendor: "BC Bookstore", amount: 14.30, date:'02/02/2022'}
+                // ],
                 colNames: [
                     {
                     label: "Vendor",
-                    field: "vendor",
+                    field: "merchant",
                     width: "10%",
                     headerStyles: {"background": "black", "color": "white"},
                     columnStyles: {"background": "gray", "color": "white"},
@@ -25,7 +25,7 @@
                     isKey: true,
                     },
                     {
-                    label: "Amount",
+                    label: "Amount ($)",
                     field: "amount",
                     width: "10%",
                     headerStyles: {"background": "black", "color": "white"},
@@ -35,7 +35,7 @@
                     },
                     {
                     label: "Date",
-                    field: "date",
+                    field: "transactionTime",
                     width: "10%",
                     headerStyles: {"background": "black", "color": "white"},
                     columnStyles: {"background": "gray", "color": "white"},
