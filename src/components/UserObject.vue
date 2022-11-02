@@ -14,39 +14,10 @@
                 //     {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
                 //     {vendor: "BC Bookstore", amount: 14.30, date:'02/02/2022'}
                 // ],
-                colNames: [
-                    {
-                    label: "Vendor",
-                    field: "merchant",
-                    width: "10%",
-                    headerStyles: {"background": "black", "color": "white"},
-                    columnStyles: {"background": "gray", "color": "white"},
-                    sortable: true,
-                    isKey: true,
-                    },
-                    {
-                    label: "Amount ($)",
-                    field: "amount",
-                    width: "10%",
-                    headerStyles: {"background": "black", "color": "white"},
-                    columnStyles: {"background": "gray", "color": "white"},
-                    sortable: true,
-                    isKey: true,
-                    },
-                    {
-                    label: "Date",
-                    field: "transactionTime",
-                    width: "10%",
-                    headerStyles: {"background": "black", "color": "white"},
-                    columnStyles: {"background": "gray", "color": "white"},
-                    sortable: true,
-                    isKey: true,
-                    }
-                ],
                 num_transactions: 3
             }
         },
-        emits: ['send_name', 'send_surname', 'send_digits', 'send_date', 'send_balance', 'send_trans', 'send_colNames', 'send_num_trans'],
+        emits: ['send_name', 'send_surname', 'send_digits', 'send_date', 'send_balance', 'send_trans', 'send_num_trans'],
         created() {
             this.$emit('send_name', this.name),
             this.$emit('send_surname', this.surname),
@@ -54,7 +25,6 @@
             this.$emit('send_date', this.exp_date),
             this.$emit('send_balance', this.balance),
             this.$emit('send_trans', this.transactions),
-            this.$emit('send_colNames', this.colNames),
             this.$emit('send_num_t', this.num_transactions)
         },
     }

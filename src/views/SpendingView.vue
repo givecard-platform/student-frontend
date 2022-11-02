@@ -20,7 +20,35 @@
                 exp_date: '',
                 balance: 0,
                 transactions: [],
-                colNames: [],
+                colNames: [
+                    {
+                    label: "Vendor",
+                    field: "merchant",
+                    width: "10%",
+                    headerStyles: {"background": "black", "color": "white"},
+                    columnStyles: {"background": "gray", "color": "white"},
+                    sortable: true,
+                    isKey: true,
+                    },
+                    {
+                    label: "Amount ($)",
+                    field: "amount",
+                    width: "10%",
+                    headerStyles: {"background": "black", "color": "white"},
+                    columnStyles: {"background": "gray", "color": "white"},
+                    sortable: true,
+                    isKey: true,
+                    },
+                    {
+                    label: "Date",
+                    field: "transactionTime",
+                    width: "10%",
+                    headerStyles: {"background": "black", "color": "white"},
+                    columnStyles: {"background": "gray", "color": "white"},
+                    sortable: true,
+                    isKey: true,
+                    }
+                ],
                 num_transactions: 0,
                 //end of userdata params
                 pieParams: {
@@ -131,7 +159,6 @@
             @send_date="d => exp_date = d"
             @send_balance="b => balance = b"
             @send_trans="t => transactions = t"
-            @send_colNames="c => colNames = c"
             @send_num_trans="n => num_transactions = n"/>
 
         <div class="box">
