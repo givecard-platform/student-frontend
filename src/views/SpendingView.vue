@@ -13,48 +13,16 @@
         },
         data() {
             return {
-               //copied data here, since the UserObject was not working
-                name: "Hannah",
-                surname: "Kim",
-                card_digits: '4020',
-                exp_date: '01/27/2032',
-                balance: 233.21,
-                transactions: [
-                    {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
-                    {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
-                    {vendor: "BC Bookstore", amount: 14.30, date:'02/02/2022'}
-                ],
-                colNames: [
-                    {
-                    label: "Vendor",
-                    field: "vendor",
-                    width: "10%",
-                    headerStyles: {"background": "purple", "color": "white"},
-                    columnStyles: {"background": "gray", "color": "white"},
-                    sortable: true,
-                    isKey: true,
-                    },
-                    {
-                    label: "Amount",
-                    field: "amount",
-                    width: "10%",
-                    headerStyles: {"background": "purple", "color": "white"},
-                    columnStyles: {"background": "gray", "color": "white"},
-                    sortable: true,
-                    isKey: true,
-                    },
-                    {
-                    label: "Date",
-                    field: "date",
-                    width: "10%",
-                    headerStyles: {"background": "purple", "color": "white"},
-                    columnStyles: {"background": "gray", "color": "white"},
-                    sortable: true,
-                    isKey: true,
-                    }
-                ],
-                num_transactions: 3,
-                //end of copy
+               //userdata params
+                name: "",
+                surname: "",
+                card_digits: '',
+                exp_date: '',
+                balance: 0,
+                transactions: [],
+                colNames: [],
+                num_transactions: 0,
+                //end of userdata params
                 pieParams: {
                     chartLoaded: true,
                     chartId: 'pie-chart',
@@ -72,6 +40,25 @@
                 },
             }
         },
+        computed: {
+            // translate_rows(row) {
+            //     return {row.type, row.amount, row.currency, row.merchant.name, row.transactionTime}
+            // }
+            get_merchant(row) {
+                return row.merchant.name
+            }
+        },
+        methods: {
+            translate_table: function() {
+                // const name = get_merchant(this.transactions[0]);
+                // this.transactions = this.transactions.merchant.splice()
+                // this.transactions.filter((row) => row.type == "Clearing")
+                this.transactions = this.transactions.slice(1,3)
+            }
+        },
+        // mounted: {
+        //     this.translate_table()
+        // },
         setup() {
             const MCCtable = reactive({
             rows: [
@@ -149,9 +136,9 @@
 
         <div class="box">
             <p>{{name}}</p>
-            <!--<table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite> -->
-            <table-lite style="color:green;" :columns="MCCtable.columns" :rows="MCCtable.rows"
-            :total="MCCtable.totalRows" :sortable="MCCtable.sortable" @do-search="MCCsort"></table-lite>
+            <table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite>
+            <!-- <table-lite style="color:green;" :columns="MCCtable.columns" :rows="MCCtable.rows"
+            :total="MCCtable.totalRows" :sortable="MCCtable.sortable" @do-search="MCCsort"></table-lite> -->
         </div>
         <Pie
         :chart-options="pieParams.chartOptions"
