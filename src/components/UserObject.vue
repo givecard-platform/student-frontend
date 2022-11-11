@@ -8,7 +8,7 @@
                 card_digits: '2543',
                 exp_date: '10/26/2029',
                 balance: 83.21,
-                transactions: json_data.transactions,
+                transactions_data: json_data.transactions,
                 // transactions: [
                 //     {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
                 //     {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
@@ -17,14 +17,14 @@
                 num_transactions: 3
             }
         },
-        emits: ['send_name', 'send_surname', 'send_digits', 'send_date', 'send_balance', 'send_trans', 'send_num_trans'],
+        emits: ['send_name', 'send_surname', 'send_digits', 'send_date', 'send_balance', 'send_trans_data', 'send_num_trans'],
         created() {
             this.$emit('send_name', this.name),
             this.$emit('send_surname', this.surname),
             this.$emit('send_digits', this.card_digits),
             this.$emit('send_date', this.exp_date),
             this.$emit('send_balance', this.balance),
-            this.$emit('send_trans', this.transactions),
+            this.$emit('send_trans_data', this.transactions_data),
             this.$emit('send_num_t', this.num_transactions)
         },
     }

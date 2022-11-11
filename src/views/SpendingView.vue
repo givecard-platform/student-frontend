@@ -19,7 +19,12 @@
                 card_digits: '',
                 exp_date: '',
                 balance: 0,
-                transactions: [],
+                transactions_data: [{}],
+                transactions: [{
+                    merchant: "merchant",
+                    amount: "amount",
+                    transactionTime: "transTime"
+                }],
                 colNames: [
                     {
                     label: "Vendor",
@@ -68,83 +73,54 @@
                 },
             }
         },
-        computed: {
-            // translate_rows(row) {
-            //     return {row.type, row.amount, row.currency, row.merchant.name, row.transactionTime}
-            // }
-            get_merchant(row) {
-                return row.merchant.name
-            }
-        },
+        // computed: {
+        //     transaction_row: function ( {
+        //         type: string,
+        //         amount: a,
+        //         currency: c,
+        //         merchant: {
+        //             category: ca,
+        //             categoryCode: cc,
+        //             countryCodeAlpha3: cca,
+        //             description: d,
+        //             name: n
+        //         },
+        //         cardExternalId: ce,
+        //         transactionTime: tt
+        //     }
+        //     ) {
+        //         return {
+        //             merchant: n,
+        //             amount: a,
+        //             transactionTime: tt
+        //         }
+        //     },
+        // },
         methods: {
-            translate_table: function() {
-                // const name = get_merchant(this.transactions[0]);
-                // this.transactions = this.transactions.merchant.splice()
-                // this.transactions.filter((row) => row.type == "Clearing")
-                this.transactions = this.transactions.slice(1,3)
+            transaction_row: function (row): { merchant: string; amount: string; transactionTime: string } {
+                return {
+                    merchant: row.merchant.n,
+                    amount: row.amount,
+                    transactionTime: row.transactionTime,
+                }
+            },
+            new_transaction_table: function (old_transactions): {merchant: string, amount: string, transactionTime: string}[] 
+            {
+                var new_transactions = [{merchant: "random", amount: "", transactionTime: "doozy"}]
+                for (let i = 0; i<old_transactions.length; i++) {
+                    console.log(old_transactions[i].amount)
+                    new_transactions[i] = {
+                        merchant: old_transactions[i].merchant.name,
+                        amount: old_transactions[i].amount,
+                        transactionTime: old_transactions[i].transactionTime
+                    }
+                }
+                return new_transactions
             }
         },
         // mounted: {
         //     this.translate_table()
         // },
-        setup() {
-            const MCCtable = reactive({
-            rows: [
-                { category: 'Automated Cash Disburse', amount: 840.00, date: '01/10/2022'},
-                { category: 'Automated Fuel Dispensers', amount: 45.95, date: '01/10/2022' },
-                { category: 'Discount Stores', amount: 50.00, date: '01/10/2022' },
-                { category: 'Eating Places/Restaurants', amount: 45.95, date: '01/10/2022' },
-                { category: 'Econo Travel/Motor Hotel', amount: 30.00, date: '01/10/2022' },
-                { category: 'Fast Food Restaurants', amount: 5.95, date: '01/10/2022' },
-                { category: 'Grocery Stores/Supermarkets', amount: 100, date: '01/10/2022' },
-                { category: 'Music Stores/Music Instruments/Pianos and Sheet Music ', amount: 45.95, date: '01/10/2022' },
-                { category: 'Service Stations', amount: 440.00, date: '01/10/2022' },
-                { category: 'Variety Stores', amount: 45.95, date: '01/10/2022' },
-                ],
-            columns: [
-                {
-                label: "Category",
-                field: "category",
-                width: "30%",
-                headerStyles: {"background": "black", "color": "white"},
-                columnStyles: {"background": "gray", "color": "white"},
-                sortable: true,
-                },
-                {
-                label: "Amount",
-                field: "amount",
-                width: "30%",
-                headerStyles: {"background": "black", "color": "white"},
-                columnStyles: {"background": "gray", "color": "white"},
-                sortable: true,
-                },
-                {
-                label: "Date",
-                field: "date",
-                width: "30%",
-                headerStyles: {"background": "black", "color": "white"},
-                columnStyles: {"background": "gray", "color": "white"},
-                sortable: true,
-                },
-            ],
-            totalRows: 10,
-            sortable: {
-                    order: 'date',
-                    sort: 'desc'
-                }
-            });
-            const MCCsort = (offset: number, limit: number, order: string, sort: string) => {
-                //todo do something with offset and limit
-                if (sort == "asc") {
-                    MCCtable.sortable.sort = 'asc'
-                    MCCtable.rows.sort((a: Record<string, any>, b: Record<string, any>) => a[order] - b[order]); //sorts in-place
-                } else {
-                    MCCtable.sortable.sort = 'desc'
-                    MCCtable.rows.sort((a: Record<string, any>, b: Record<string, any>) => b[order] - a[order]);
-                }
-            }
-            return { MCCtable, MCCsort }
-        }
     }
 </script>
 
@@ -153,19 +129,26 @@
     <main>
         <h1 text-align="center">Budget</h1>
         <!-- getting user data  -->
-        <UserObject @send_name="n => name = n" 
-            @send_surname="s => surname = s" 
-            @send_digits="d => card_digits = d"
-            @send_date="d => exp_date = d"
-            @send_balance="b => balance = b"
-            @send_trans="t => transactions = t"
-            @send_num_trans="n => num_transactions = n"/>
+        <UserObject @send_name="(n: string) => name = n" 
+            @send_surname="(s: string) => surname = s" 
+            @send_digits="(d: string) => card_digits = d"
+            @send_date="(d: string) => exp_date = d"
+            @send_balance="(b: number) => balance = b"
+            @send_trans_data="(t: {}[]) => transactions_data = t"
+            @send_num_trans="(n: number) => num_transactions = n"/>
 
         <div class="box">
             <p>{{name}}</p>
+            <button @click="transactions = new_transaction_table(transactions_data)">Show table</button>
+
+            <p>Original data: {{transactions_data}}</p>
+            <p>Reformatted data: {{transactions}}</p>
+
+            <!-- unformatted data -->
+            <table-lite style="color:green;" :columns="colNames" :rows="transactions_data" :total="num_transactions"></table-lite>
+            <!-- trying to get below to work -->
             <table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite>
-            <!-- <table-lite style="color:green;" :columns="MCCtable.columns" :rows="MCCtable.rows"
-            :total="MCCtable.totalRows" :sortable="MCCtable.sortable" @do-search="MCCsort"></table-lite> -->
+
         </div>
         <Pie
         :chart-options="pieParams.chartOptions"
