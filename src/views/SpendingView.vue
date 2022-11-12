@@ -19,11 +19,19 @@
                 card_digits: '',
                 exp_date: '',
                 balance: 0,
-                transactions_data: [{}],
-                transactions: [{
-                    merchant: "merchant",
-                    amount: "amount",
-                    transactionTime: "transTime"
+                transactions_data: [{
+                    type: "Clearing",
+                    amount: "210.14",
+                    currency: "USD",
+                    merchant: {
+                        category: "DEPARTMENT_STORES",
+                        categoryCode: "5311",
+                        countryCodeAlpha3: "USA",
+                        description: "LUREIN HAS STUFF",
+                        name: "PEPPERMINT MAX"
+                    },
+                    cardExternalId: "ORDELVJ48L",
+                    transactionTime: "2022-10-18T22:16:13.195Z"
                 }],
                 colNames: [
                     {
@@ -36,7 +44,7 @@
                     isKey: true,
                     },
                     {
-                    label: "Amount ($)",
+                    label: "Amount in dollars",
                     field: "amount",
                     width: "10%",
                     headerStyles: {"background": "black", "color": "white"},
@@ -73,54 +81,21 @@
                 },
             }
         },
-        // computed: {
-        //     transaction_row: function ( {
-        //         type: string,
-        //         amount: a,
-        //         currency: c,
-        //         merchant: {
-        //             category: ca,
-        //             categoryCode: cc,
-        //             countryCodeAlpha3: cca,
-        //             description: d,
-        //             name: n
-        //         },
-        //         cardExternalId: ce,
-        //         transactionTime: tt
-        //     }
-        //     ) {
-        //         return {
-        //             merchant: n,
-        //             amount: a,
-        //             transactionTime: tt
-        //         }
-        //     },
-        // },
-        methods: {
-            transaction_row: function (row): { merchant: string; amount: string; transactionTime: string } {
-                return {
-                    merchant: row.merchant.n,
-                    amount: row.amount,
-                    transactionTime: row.transactionTime,
-                }
-            },
-            new_transaction_table: function (old_transactions): {merchant: string, amount: string, transactionTime: string}[] 
+        computed: {
+            new_transaction_table() 
             {
-                var new_transactions = [{merchant: "random", amount: "", transactionTime: "doozy"}]
-                for (let i = 0; i<old_transactions.length; i++) {
-                    console.log(old_transactions[i].amount)
+                var new_transactions = [{merchant: "random", amount: "", transactionTime: "doozy"}] 
+                for (let i = 0; i<this.transactions_data.length; i++) {
+                    console.log(this.transactions_data[i].amount)
                     new_transactions[i] = {
-                        merchant: old_transactions[i].merchant.name,
-                        amount: old_transactions[i].amount,
-                        transactionTime: old_transactions[i].transactionTime
+                        merchant: this.transactions_data[i].merchant.name,
+                        amount: this.transactions_data[i].amount,
+                        transactionTime: this.transactions_data[i].transactionTime
                     }
                 }
                 return new_transactions
             }
         },
-        // mounted: {
-        //     this.translate_table()
-        // },
     }
 </script>
 
@@ -134,20 +109,13 @@
             @send_digits="(d: string) => card_digits = d"
             @send_date="(d: string) => exp_date = d"
             @send_balance="(b: number) => balance = b"
-            @send_trans_data="(t: {}[]) => transactions_data = t"
+            @send_trans_data="t => transactions_data = t"
             @send_num_trans="(n: number) => num_transactions = n"/>
 
         <div class="box">
             <p>{{name}}</p>
-            <button @click="transactions = new_transaction_table(transactions_data)">Show table</button>
 
-            <p>Original data: {{transactions_data}}</p>
-            <p>Reformatted data: {{transactions}}</p>
-
-            <!-- unformatted data -->
-            <table-lite style="color:green;" :columns="colNames" :rows="transactions_data" :total="num_transactions"></table-lite>
-            <!-- trying to get below to work -->
-            <table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite>
+            <table-lite style="color:green;" :columns="colNames" :rows="new_transaction_table" :total="num_transactions"></table-lite>
 
         </div>
         <Pie

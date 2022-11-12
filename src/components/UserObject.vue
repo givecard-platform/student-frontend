@@ -9,11 +9,6 @@
                 exp_date: '10/26/2029',
                 balance: 83.21,
                 transactions_data: json_data.transactions,
-                // transactions: [
-                //     {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
-                //     {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
-                //     {vendor: "BC Bookstore", amount: 14.30, date:'02/02/2022'}
-                // ],
                 num_transactions: 3
             }
         },
