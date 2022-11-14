@@ -14,6 +14,7 @@ import DataView from './views/DataView.vue' //was actually required
   <nav>
     <RouterLink to="/">Reporting</RouterLink>
     <RouterLink to="/about">Spending</RouterLink>
+    <RouterLink to="/budget">Budgeting</RouterLink>
     <RouterLink to="/testing_async">Testing</RouterLink>
   </nav>
   <RouterView />
