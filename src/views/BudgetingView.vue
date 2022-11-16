@@ -81,5 +81,5 @@
 </template>
 
 <style scoped>
-@import '../main_site.css'
+@import '../assets/main_site.css'
 </style>
