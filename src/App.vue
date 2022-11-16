@@ -5,6 +5,7 @@ import ReportingView from './views/ReportingView.vue'
 import SpendingView from './views/SpendingView.vue'
 import './../node_modules/Bulma/CSS/bulma.css'
 import DataView from './views/DataView.vue' //was actually required
+
 </script>
 
 <template>
@@ -21,8 +22,8 @@ import DataView from './views/DataView.vue' //was actually required
 </template>
 
 <style scoped>
-
-header {
+  @import './main_site.css'
+/* header {
   line-height: 1.5;
   max-height: 100vh;
 }
@@ -85,5 +86,5 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
-}
+} */
 </style>
