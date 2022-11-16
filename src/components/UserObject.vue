@@ -26,10 +26,4 @@
 </script>
 
 <template>
-    <div>
-    <p>Name: {{this.name}} {{this.surname}}</p>
-    <p>Last 4 digits of card: {{this.card_digits}}</p>
-    <p>Expire: {{this.exp_date}}</p>
-    <p>Balance: ${{this.balance}}</p>
-    </div>
 </template>

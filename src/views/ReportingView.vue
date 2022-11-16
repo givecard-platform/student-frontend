@@ -50,17 +50,10 @@
                 num_transactions: 2
             }
         }
-        // methods : {
-        //     add_transaction({vendor: v, amount: a, date: d,}) {
-        //         this.transactions = this.transactions.push({vendor: v, amount: a, date: d,});
-        //         this.num_transactions++;
-        //     }
-        // }
     }
 </script>
 
 <template>
-    
     <main>
         <h1 text-align="center">Reporting Page</h1>
         
@@ -73,6 +66,17 @@
             @send_trans="t => transactions = t"
             @send_colNames="c => colNames = c"
             @send_num_trans="n => num_transactions = n"/>
+
+        <p>Name: {{name}} {{surname}}</p>
+        <p>Last 4 digits of card: {{card_digits}}</p>
+        <p>Expire: {{exp_date}}</p>
+        <p>Balance: ${{balance}}</p>
+        
     </main>
     
+    
 </template>
+
+<style scoped>
+@import '../main_site.css'
+</style>

@@ -102,7 +102,7 @@
 <template>
     
     <main>
-        <h1 text-align="center">Budget</h1>
+        <h1 text-align="center">Transactions</h1>
         <!-- getting user data  -->
         <UserObject @send_name="(n: string) => name = n" 
             @send_surname="(s: string) => surname = s" 
@@ -130,6 +130,6 @@
     
 </template>
 
-<style>
-
+<style scoped>
+@import '../main_site.css'
 </style>

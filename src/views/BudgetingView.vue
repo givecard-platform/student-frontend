@@ -79,3 +79,7 @@
         </div>
     </main>
 </template>
+
+<style scoped>
+@import '../main_site.css'
+</style>
