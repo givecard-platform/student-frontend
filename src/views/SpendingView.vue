@@ -113,7 +113,7 @@
             @send_num_trans="(n: number) => num_transactions = n"/>
 
         <div class="box">
-            <p>{{name}}</p>
+            <h5>{{name}}</h5>
 
             <table-lite style="color:green;" :columns="colNames" :rows="new_transaction_table" :total="num_transactions"></table-lite>
 

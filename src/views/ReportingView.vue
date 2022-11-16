@@ -67,10 +67,10 @@
             @send_colNames="c => colNames = c"
             @send_num_trans="n => num_transactions = n"/>
 
-        <p>Name: {{name}} {{surname}}</p>
-        <p>Last 4 digits of card: {{card_digits}}</p>
-        <p>Expire: {{exp_date}}</p>
-        <p>Balance: ${{balance}}</p>
+        <h5>Name: {{name}} {{surname}}</h5>
+        <h5>Last 4 digits of card: {{card_digits}}</h5>
+        <h5>Expire: {{exp_date}}</h5>
+        <h5>Balance: ${{balance}}</h5>
         
     </main>
     
