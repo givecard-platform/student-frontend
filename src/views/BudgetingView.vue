@@ -55,20 +55,43 @@
                         headers: {
                             //SOME_API_KEY
                         },
-                        body: someList.toString()
+                        body: JSON.stringify({listName: someList}) //todo verify listName is one of the actual lists
                     }
                 )
+            },
+            async fetchData() {
+                const res = await fetch( 
+                    "GIVECARD_URL"
+                )
+                var resJSON = await res.json()
+                var fetchMap = JSON.parse(resJSON)
+                if ("goalList" in fetchMap) {
+                    this.goalList = fetchMap.goalList
+                }
+                if ("completedGoals" in fetchMap) {
+                    this.completedGoals = fetchMap.completedGoals
+                }
             }
         },
         watch : {
             goalList : {
                 //automatically is called whenever list changes. may have some performance impacts, since will be saving entire list every time
                 handler(updatedList) { 
-                    //this.postList(updatedList) //in testing, so not using a server
+                    //this.postList(updatedList, "goalList") //in testing, so not using a server
+                    console.log(updatedList)
+                },
+                deep: true
+            },
+            completedGoals : {
+                handler(updatedList) {
+                    //this.postList(updatedList, "completedGoals") //in testing, so not using a server right now
                     console.log(updatedList)
                 },
                 deep: true
             }
+        },
+        mounted() {
+            //this.fetchData() //in testing, so not using a server right now
         }
     }
 </script>
