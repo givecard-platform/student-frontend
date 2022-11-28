@@ -20,10 +20,10 @@
                 "Do one action that is good for your finances, but you've been avoiding",
                 "Be proud of yourself for one thing you've done recently to help yourself financially"
                 ],
-                newGoal : document.getElementById("newTaskName"), //easy way to do it, not sure if the best way
-                someGoal : this.$refs.someGoal,
-                noGoal : document.getElementById("newTaskName"), //easy way to do it, not sure if the best way
-                anyGoal : ""
+                //anyGoal : document.getElementById("newTaskName"), //easy way to do it, not sure if the best way
+                //someGoal : this.$refs.someGoal,
+                //noGoal : document.getElementById("newTaskName"), //easy way to do it, not sure if the best way
+                newGoal : ""
             }
         },
         computed: {
@@ -31,8 +31,9 @@
         },
         methods : {
             addGoal() {
-                if (this.anyGoal != "") {
-                    this.goalList.push(this.anyGoal)
+                if (this.newGoal != "") {
+                    this.goalList.push(this.newGoal)
+                    this.newGoal = ""
                 }
             },
             completeGoal(goal: string) {
@@ -45,6 +46,28 @@
                 } else if (goalType === "regular") {
                     this.goalList.splice(this.goalList.indexOf(goal), 1)
                 }
+            },
+            async postList(someList: Array<string>, listName: string) { //may have performance impacts since it saves entire list
+                return await fetch( //should return only after post completes
+                    'GIVECARD_URL',
+                    {
+                        method: 'POST',
+                        headers: {
+                            //SOME_API_KEY
+                        },
+                        body: someList.toString()
+                    }
+                )
+            }
+        },
+        watch : {
+            goalList : {
+                //automatically is called whenever list changes. may have some performance impacts, since will be saving entire list every time
+                handler(updatedList) { 
+                    //this.postList(updatedList) //in testing, so not using a server
+                    console.log(updatedList)
+                },
+                deep: true
             }
         }
     }
@@ -58,7 +81,7 @@
         <h2 text-align="center">Add a Goal</h2>
         <div class="field has-addons">
         <button class="button is-medium is-responsive is-rounded is-primary" v-on:click="addGoal()">Add Goal</button>
-        <textarea class="textarea has-background-dark has-text-white" type="text" v-model="anyGoal"></textarea>
+        <textarea class="textarea has-background-dark has-text-white" type="text" v-model="newGoal"></textarea>
         </div>
 
         <h2 text-align="center">Current Goals</h2>
