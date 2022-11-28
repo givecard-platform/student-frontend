@@ -9,36 +9,62 @@ import DataView from './views/DataView.vue' //was actually required
 </script>
 
 <template>
-  <header role="banner">
-    <div class="row justify-content-between">
-      <nav class="col-12 site-nav">
-        <a>
-          <!-- logo -->
-          <img src= images/givecard-new-logo.png class="img-fluid logo" style="max-width:150px">
-        </a>
-        <!-- for mobile viewing? -->
-        <button class="d-block d-md-none hamburger hamburger--spin
-                      templateux-toggle templateux-toggle-light ml-auto
-                      templateux-toggle-menu" data-toggle="collapse"
-                      data-target="#mobile-menu" aria-controls="mobile-menu"
-                      aria-expanded="false" aria-label="Toggle navigation"
-                      style="float:right">
-            <span class="hamburger-box">
-              <span class="hamburger-inner"></span>
-            </span>
-          </button>
 
-          <ul class="sf-menu templateux-menu d-none d-md-block">
-            <RouterLink to="/" class="animsition-link">Reporting</RouterLink>
-            <RouterLink to="/about" class="animsition-link">Spending</RouterLink>
-            <RouterLink to="/budget" class="animsition-link">Budgeting</RouterLink>
-            <RouterLink to="/testing_async" class="animsition-link">Testing</RouterLink>
-          </ul>
-      </nav>
-      <RouterView />
-    </div>
-  </header>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="GiveCard gives debit cards to the homeless, and provides an online platform where you can donate money directly to the regulated card of a specific homeless person, and get notified on how they spend your donation.">
     
+    <title>GiveCard :: Reporting Page </title>
+    <link rel="icon" type="image/png" href="./images/favicon.png" />
+    <link rel="stylesheet" href="css/style.css">
+  
+  </head>
+    <!-- <body> -->
+
+    <!-- <div id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out"> -->
+
+
+      <!-- header -->
+        <header class="templateux-navbar dark" role="banner">
+          <!-- <div class="container"  data-aos="fade-down"> -->
+            <div class="row justify-content-between">
+              <nav class="col-12 site-nav">
+                <!-- logo -->
+                <a>
+                  <img src= ./images/givecard-new-logo.png class="img-fluid logo" style="max-width:150px">
+                </a>
+                <!-- for mobile viewing? -->
+                <button class="d-block d-md-none hamburger hamburger--spin
+                              templateux-toggle templateux-toggle-light ml-auto
+                              templateux-toggle-menu" data-toggle="collapse"
+                              data-target="#mobile-menu" aria-controls="mobile-menu"
+                              aria-expanded="false" aria-label="Toggle navigation"
+                              style="float:right">
+                    <span class="hamburger-box">
+                      <span class="hamburger-inner"></span>
+                    </span>
+                  </button>
+
+                  <ul class="sf-menu templateux-menu d-none d-md-block">
+                    <li><RouterLink to="/" class="animsition-link">Reporting</RouterLink></li>
+                    <li><RouterLink to="/about" class="animsition-link">Spending</RouterLink></li>
+                    <li><RouterLink to="/budget" class="animsition-link">Budgeting</RouterLink></li>
+                    <li><RouterLink to="/testing_async" class="animsition-link">Testing</RouterLink></li>
+                  </ul>
+              </nav>
+            </div> <!-- row -->
+          <!-- </div>  container -->
+        </header>
+
+        <div class="templateux-section" style="padding-top:200px">
+          <div class="container">
+            <RouterView />
+          </div>
+        </div> <!-- .Webpage-->
+
+      <!-- </div> body -->
+    <!-- </body> -->
 </template>
 
 <style scoped>

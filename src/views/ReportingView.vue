@@ -55,8 +55,7 @@
 
 <template>
     <main>
-        <h1 text-align="center">Reporting Page</h1>
-        
+
         <!-- getting user data  -->
         <UserObject @send_name="n => name = n" 
             @send_surname="s => surname = s" 
@@ -66,6 +65,11 @@
             @send_trans="t => transactions = t"
             @send_colNames="c => colNames = c"
             @send_num_trans="n => num_transactions = n"/>
+
+        <!-- <div class="col-md-12 block-heading-wrap"> -->
+            <!-- <h1 class="heading mb-5 text-center">Reporting Page</h1> -->
+            <h1 text-align="center">Reporting Page</h1>
+        <!-- </div> -->
 
         <h5>Name: {{name}} {{surname}}</h5>
         <h5>Last 4 digits of card: {{card_digits}}</h5>
