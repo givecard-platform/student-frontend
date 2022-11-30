@@ -40,6 +40,6 @@ export default new VueI18n({
     localStorage.getItem("lang") ||
     detectLanguage() ||
     process.env.VUE_APP_I18N_LOCALE,
-  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "ko",
+  fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "en",
   messages: loadLocaleMessages(),
 });
