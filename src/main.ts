@@ -4,8 +4,10 @@ import router from './router'
 
 import './assets/main.css'
 
+//translations
+//https://betterprogramming.pub/vue-i18n-ultimate-guide-fb3d9db48c94
 import { createI18n } from 'vue-i18n'
-// import I18n from './i18n.js' //causes page to not load 
+// import I18n from './i18n.js' //*causes page to not load* 
 //i18n.js supposed to be generated with npm install vue-i18n but it didn't
 //the one that exists now was manually made and the file contents were copied pasted from website
 
@@ -20,20 +22,6 @@ import { createI18n } from 'vue-i18n'
 //     messages: I18n.loadLocaleMessages()
 //   })
 
-//another version I tried making that doesn't depend on the i18n.js file
-// const i18n = createI18n({
-//         legacy: false,
-//         locale:
-//         localStorage.getItem("lang") ||
-//         process.env.VUE_APP_I18N_LOCALE,
-//       fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || "ko",
-//         // Load selected lang's .json file
-//         messages: {
-//             en: { },
-//             ja: { },
-//           }
-//       })
-
 const app = createApp(App)
 
 app.use(router)
@@ -42,4 +30,4 @@ app.use(router)
 app.mount('#app')
 
 //I'm getting "-bash: vue-translation-manager: command not found" when I try to run 
-//vue-translation-manager translate (step )
+//vue-translation-manager translate
