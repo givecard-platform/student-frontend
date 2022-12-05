@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import ReportingView from '../views/ReportingView.vue'
 import SpendingView from '../views/SpendingView.vue'
 import BudgetingView from '../views/BudgetingView.vue'
-import DataView from '../views/DataView.vue'
+// import DataView from '../views/DataView.vue'
 
 
 const router = createRouter({
@@ -30,11 +30,12 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/BudgetingView.vue')
     },
-    {
-      path: '/testing_async',
-      name: 'Testing',
-      component: DataView
-    },
+    // used for testing asynchronous fetching in views/DataView.vue
+    // {
+    //   path: '/testing_async',
+    //   name: 'Testing',
+    //   component: DataView
+    // },
   ]
 })
 

@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-//import HelloWorld from './components/HelloWorld.vue'
-import ReportingView from './views/ReportingView.vue'
-import SpendingView from './views/SpendingView.vue'
 import './../node_modules/Bulma/CSS/bulma.css'
-import DataView from './views/DataView.vue' //was actually required
 
 </script>
 
@@ -20,14 +16,8 @@ import DataView from './views/DataView.vue' //was actually required
     <link rel="stylesheet" href="css/style.css">
   
   </head>
-    <!-- <body> -->
-
-    <!-- <div id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out"> -->
-
-
       <!-- header -->
         <header class="templateux-navbar dark" role="banner">
-          <!-- <div class="container"  data-aos="fade-down"> -->
             <div class="row justify-content-between">
               <nav class="col-12 site-nav">
                 <!-- logo -->
@@ -46,25 +36,21 @@ import DataView from './views/DataView.vue' //was actually required
                     </span>
                   </button>
 
+                  <!-- navbar links to other pages -->
                   <ul class="sf-menu templateux-menu d-none d-md-block">
-                    <li><RouterLink to="/" class="animsition-link">Reporting</RouterLink></li>
-                    <li><RouterLink to="/about" class="animsition-link">Spending</RouterLink></li>
+                    <li><RouterLink to="/" class="animsition-link">Home</RouterLink></li>
+                    <li><RouterLink to="/about" class="animsition-link">Activity</RouterLink></li>
                     <li><RouterLink to="/budget" class="animsition-link">Budgeting</RouterLink></li>
-                    <li><RouterLink to="/testing_async" class="animsition-link">Testing</RouterLink></li>
                   </ul>
               </nav>
             </div> <!-- row -->
-          <!-- </div>  container -->
         </header>
 
+        <!-- actual web page -->
         <div class="templateux-section" style="padding-top:200px">
-          <div class="container">
             <RouterView />
-          </div>
-        </div> <!-- .Webpage-->
+         </div>
 
-      <!-- </div> body -->
-    <!-- </body> -->
 </template>
 
 <style scoped>
