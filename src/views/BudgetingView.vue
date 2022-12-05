@@ -100,7 +100,7 @@
     <main>
         <h1 text-align="center">Goals</h1><br>
 
-            <div class="control"> <!-- This is needed to make sure the added goals don't resize the textarea, which was happening before -->
+            <div class="field"> <!-- This is needed to make sure the added goals don't resize the textarea, which was happening before -->
             
                 <!-- textarea isn't resizing to fit inside <div class="box"> -->
                 <!-- <div class="box"> -->
@@ -120,7 +120,7 @@
                     </div>
 
                     <h3 text-align="center" v-if="completedGoals.length != 0">Completed Goals</h3>
-                    <div class="field has-addons" v-for="goal in completedGoals">
+                    <div class="field has-addons is-right" v-for="goal in completedGoals">
                         <div class="box has-background-dark has-text-white">{{goal}}</div>
                         <button class="button is-medium is-responsive is-rounded is-danger" v-on:click="deleteGoal(goal, 'completed')">Delete</button>
                     </div>

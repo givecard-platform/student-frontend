@@ -16,41 +16,39 @@ import './../node_modules/Bulma/CSS/bulma.css'
     <link rel="stylesheet" href="css/style.css">
   
   </head>
-      <!-- header -->
-        <header class="templateux-navbar dark" role="banner">
-            <div class="row justify-content-between">
-              <nav class="col-12 site-nav">
-                <!-- logo -->
-                <a>
-                  <img src= ./images/givecard-new-logo.png class="img-fluid logo" style="max-width:150px">
-                </a>
-                <!-- for mobile viewing? -->
-                <button class="d-block d-md-none hamburger hamburger--spin
-                              templateux-toggle templateux-toggle-light ml-auto
-                              templateux-toggle-menu" data-toggle="collapse"
-                              data-target="#mobile-menu" aria-controls="mobile-menu"
-                              aria-expanded="false" aria-label="Toggle navigation"
-                              style="float:right">
-                    <span class="hamburger-box">
-                      <span class="hamburger-inner"></span>
-                    </span>
-                  </button>
+    <!-- <body> -->
+    <!-- <div id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out"> -->
+      <div>
+        <div class="section">
+      <div class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+        <a class="navbar-brand">
+          <img src="./images/givecard-new-logo.png" class="img-fluid logo" style="max-width:150px">
+        </a>
+        </div>
+        <div class="navbar-menu is-active">
+          <div class="navbar-start">
+          <RouterLink to="/" class="animsition-link">Reporting</RouterLink>
+          <RouterLink to="/about" class="animsition-link">Spending</RouterLink>
+          <RouterLink to="/budget" class="animsition-link">Budgeting</RouterLink>
+          <RouterLink to="/testing_async" class="animsition-link">Testing</RouterLink>
+        </div>
+        <div class="navbar-end"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-                  <!-- navbar links to other pages -->
-                  <ul class="sf-menu templateux-menu d-none d-md-block">
-                    <li><RouterLink to="/" class="animsition-link">Home</RouterLink></li>
-                    <li><RouterLink to="/about" class="animsition-link">Activity</RouterLink></li>
-                    <li><RouterLink to="/budget" class="animsition-link">Budgeting</RouterLink></li>
-                  </ul>
-              </nav>
-            </div> <!-- row -->
-        </header>
+    <div class="section">
+      <div class="container">
+      <div>
+        <RouterView />
+      </div>
+      </div>
+    </div>
 
-        <!-- actual web page -->
-        <div class="templateux-section" style="padding-top:200px">
-            <RouterView />
-         </div>
-
+  </div>
 </template>
 
 <style scoped>
