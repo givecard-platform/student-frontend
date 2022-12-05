@@ -108,7 +108,7 @@
                     <div class="field has-addons">
                         <button class="button is-medium is-responsive is-rounded is-primary" v-on:click="addGoal()">Add Goal</button>
                         <textarea class="textarea has-background-dark has-text-white" type="text" v-model="newGoal"></textarea>
-                    </div>
+                    </div><br>
                 <!-- </div> -->
 
                 <div class="box">

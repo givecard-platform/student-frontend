@@ -63,8 +63,6 @@
             @send_digits="d => card_digits = d"
             @send_date="d => exp_date = d"
             @send_balance="b => balance = b"
-            @send_trans="t => transactions = t"
-            @send_colNames="c => colNames = c"
             @send_num_trans="n => num_transactions = n"/>
 
         <h1 text-align="center">Welcome, {{name}}</h1><br>
