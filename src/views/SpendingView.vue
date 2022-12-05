@@ -64,7 +64,7 @@
                 ],
                 num_transactions: 0,
                 //end of userdata params
-                pieColors: ['#41B883', '#E46651', '#00D8FF', '#fbbc04', '#46BDC6', '#9900ff', '#ff00ff', '#4285F4', '#EA4335'],
+                pieColors: ['#41B883', '#E46651', '#00D8FF', '#FBBC04', '#46BDC6', '#9900FF', '#FF00FF', '#4285F4', '#EA4335'],
                 pieParams: {
                     chartLoaded: true,
                     chartId: 'pie-chart',
@@ -117,12 +117,13 @@
             new_pie_data()
             {
                 var new_chart_labels = []
-                var label_freq = []
+                var label_freq = [0]
                 var num_labels = 0
+                label_freq.splice(0,1)
                 //labels & data
                 for (let i = 0; i<this.transactions_data.length; i++) {
                     var label = this.transactions_data[i].merchant.category
-                    var amount = this.transactions_data[i].amount
+                    var amount = Number(this.transactions_data[i].amount)
                     var index = this.index_of(new_chart_labels, label)
                     if (index == -1) {
                         new_chart_labels.push(label)
@@ -173,14 +174,14 @@
                 <div1>-->
     
         <div1>
-            <div class="box">
+            <div class="box has-text-light has-background-grey-dark">
                 <h5 class="heading mb-3">Transactions Table</h5>
                 <table-lite style="color:green;" :columns="colNames" :rows="new_transaction_table" :total="num_transactions"></table-lite>
             </div>
-        </div1>
+        </div1><br>
 
         <div1>
-            <div class="box">
+            <div class="box has-text-light has-background-grey-dark">
                 <h5 class="heading mb-3">Transactions by Categories</h5>
                 <Pie
                     :chart-options="pieParams.chartOptions"
@@ -192,7 +193,7 @@
                 />  
             </div>   
         </div1> 
-         
+
     </main>
     
 </template>
