@@ -6,7 +6,7 @@ import './assets/main.css'
 
 //translations
 //https://betterprogramming.pub/vue-i18n-ultimate-guide-fb3d9db48c94
-import { createI18n } from 'vue-i18n'
+// import { createI18n } from 'vue-i18n'
 // import I18n from './i18n.js' //*causes page to not load* 
 //i18n.js supposed to be generated with npm install vue-i18n but it didn't
 //the one that exists now was manually made and the file contents were copied pasted from website
