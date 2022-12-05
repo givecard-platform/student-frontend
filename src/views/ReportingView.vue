@@ -68,7 +68,7 @@
         <h1 text-align="center">Welcome, {{name}}</h1><br>
 
         <div class="box">
-            <h3><RouterLink to="/about" class="animsition-link">GiveCard Account - {{card_digits}}</RouterLink></h3><br>
+            <h3><RouterLink to="/spending" class="animsition-link">GiveCard Account - {{card_digits}}</RouterLink></h3><br>
             <h5 class="heading mb-3">Expires: {{exp_date}}</h5>
             <h5 class="heading mb-3">Balance: ${{balance}}</h5>
         </div>
