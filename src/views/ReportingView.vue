@@ -1,6 +1,7 @@
 <script lang="ts">
     import UserObject from '../components/UserObject.vue'   
     import TableLite from "vue3-table-lite/ts"
+    import { RouterLink, RouterView } from 'vue-router'
 
     export default {
         components: {
@@ -50,29 +51,33 @@
                 num_transactions: 2
             }
         }
-        // methods : {
-        //     add_transaction({vendor: v, amount: a, date: d,}) {
-        //         this.transactions = this.transactions.push({vendor: v, amount: a, date: d,});
-        //         this.num_transactions++;
-        //     }
-        // }
     }
 </script>
 
 <template>
-    
     <main>
-        <h1 text-align="center">Reporting Page</h1>
-        
+
         <!-- getting user data  -->
         <UserObject @send_name="n => name = n" 
             @send_surname="s => surname = s" 
             @send_digits="d => card_digits = d"
             @send_date="d => exp_date = d"
             @send_balance="b => balance = b"
-            @send_trans="t => transactions = t"
-            @send_colNames="c => colNames = c"
             @send_num_trans="n => num_transactions = n"/>
+
+        <h1 text-align="center">Welcome, {{name}}</h1><br>
+
+        <div class="box">
+            <h3><RouterLink to="/spending" class="animsition-link">GiveCard Account - {{card_digits}}</RouterLink></h3><br>
+            <h5 class="heading mb-3">Expires: {{exp_date}}</h5>
+            <h5 class="heading mb-3">Balance: ${{balance}}</h5>
+        </div>
+        
     </main>
     
+    
 </template>
+
+<style scoped>
+@import '../assets/main_site.css'
+</style>

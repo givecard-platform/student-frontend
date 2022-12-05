@@ -1,0 +1,88 @@
+{
+    "transactions": [
+        {
+            "type": "Clearing",
+            "amount": "210.14",
+            "currency": "USD",
+            "merchant": {
+                "category": "DEPARTMENT_STORES",
+                "categoryCode": "5311",
+                "countryCodeAlpha3": "USA",
+                "description": "LUREIN HAS STUFF",
+                "name": "PEPPERMINT MAX"
+            },
+            "cardExternalId": "ORDELVJ48L",
+            "transactionTime": "2022-10-18T22:16:13.195Z"
+        },
+        {
+            "type": "Clearing",
+            "amount": "195.88",
+            "currency": "USD",
+            "merchant": {
+                "category": "DEPARTMENT_STORES",
+                "categoryCode": "5311",
+                "countryCodeAlpha3": "USA",
+                "description": "LUREIN HAS STUFF",
+                "name": "LUREIN SUPERSTORE"
+            },
+            "cardExternalId": "ORDELVJ48L",
+            "transactionTime": "2022-10-18T01:38:48.424Z"
+        },
+        {
+            "type": "Clearing",
+            "amount": "451.55",
+            "currency": "USD",
+            "merchant": {
+                "category": "GROCERY_STORES_SUPERMARKETS",
+                "categoryCode": "5411",
+                "countryCodeAlpha3": "USA",
+                "description": "GROCERIES FOR YOU",
+                "name": "COLIN GROCERS"
+            },
+            "cardExternalId": "ORDELVJ48L",
+            "transactionTime": "2022-10-18T01:37:09.943Z"
+        },
+        {
+            "type": "Clearing",
+            "amount": "20.18",
+            "currency": "USD",
+            "merchant": {
+                "category": "HARDWARE_STORES",
+                "categoryCode": "5251",
+                "countryCodeAlpha3": "USA",
+                "description": "DIKSHA FIX THINGS",
+                "name": "DIKSHA HARDWARE"
+            },
+            "cardExternalId": "ORDEDGTWTE",
+            "transactionTime": "2022-10-18T01:31:52.018Z"
+        },
+        {
+            "type": "Clearing",
+            "amount": "17.38",
+            "currency": "USD",
+            "merchant": {
+                "category": "CARPENTRY_SERVICES",
+                "categoryCode": "1750",
+                "countryCodeAlpha3": "USA",
+                "description": "SOFIA CONCRETE THINGS",
+                "name": "SOFIAS CARPENTRY"
+            },
+            "cardExternalId": "ORDEDGTWTE",
+            "transactionTime": "2022-10-18T01:30:02.711Z"
+        },
+        {
+            "type": "Clearing",
+            "amount": "100",
+            "currency": "USD",
+            "merchant": {
+                "category": "CAR_RENTAL",
+                "categoryCode": "3356",
+                "countryCodeAlpha3": "USA",
+                "description": "RENT CARS ANNA",
+                "name": "ANNAS CAR RENTAL"
+            },
+            "cardExternalId": "ORDEDGTWTE",
+            "transactionTime": "2022-10-18T01:27:42.995Z"
+        }
+    ]
+}

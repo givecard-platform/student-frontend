@@ -13,23 +13,32 @@
         },
         data() {
             return {
-               //copied data here, since the UserObject was not working
-                name: "Hannah",
-                surname: "Kim",
-                card_digits: '4020',
-                exp_date: '01/27/2032',
-                balance: 233.21,
-                transactions: [
-                    {vendor: "Walgreens", amount: 4.99, date: '01/10/2022',},
-                    {vendor: "CVS", amount: 1.25, date: '01/15/2022'},
-                    {vendor: "BC Bookstore", amount: 14.30, date:'02/02/2022'}
-                ],
+               //userdata params
+                name: "",
+                surname: "",
+                card_digits: '',
+                exp_date: '',
+                balance: 0,
+                transactions_data: [{
+                    type: "Clearing",
+                    amount: "210.14",
+                    currency: "USD",
+                    merchant: {
+                        category: "DEPARTMENT_STORES",
+                        categoryCode: "5311",
+                        countryCodeAlpha3: "USA",
+                        description: "LUREIN HAS STUFF",
+                        name: "PEPPERMINT MAX"
+                    },
+                    cardExternalId: "ORDELVJ48L",
+                    transactionTime: "2022-10-18T22:16:13.195Z"
+                }],
                 colNames: [
                     {
                     label: "Vendor",
-                    field: "vendor",
+                    field: "merchant",
                     width: "10%",
-                    headerStyles: {"background": "purple", "color": "white"},
+                    headerStyles: {"background": "black", "color": "white"},
                     columnStyles: {"background": "gray", "color": "white"},
                     sortable: true,
                     isKey: true,
@@ -38,23 +47,24 @@
                     label: "Amount",
                     field: "amount",
                     width: "10%",
-                    headerStyles: {"background": "purple", "color": "white"},
+                    headerStyles: {"background": "black", "color": "white"},
                     columnStyles: {"background": "gray", "color": "white"},
                     sortable: true,
                     isKey: true,
                     },
                     {
                     label: "Date",
-                    field: "date",
+                    field: "transactionTime",
                     width: "10%",
-                    headerStyles: {"background": "purple", "color": "white"},
+                    headerStyles: {"background": "black", "color": "white"},
                     columnStyles: {"background": "gray", "color": "white"},
                     sortable: true,
                     isKey: true,
                     }
                 ],
-                num_transactions: 3,
-                //end of copy
+                num_transactions: 0,
+                //end of userdata params
+                pieColors: ['#41B883', '#E46651', '#00D8FF', '#fbbc04', '#46BDC6', '#9900ff', '#ff00ff', '#4285F4', '#EA4335'],
                 pieParams: {
                     chartLoaded: true,
                     chartId: 'pie-chart',
@@ -72,99 +82,121 @@
                 },
             }
         },
-        setup() {
-            const MCCtable = reactive({
-            rows: [
-                { category: 'Automated Cash Disburse', amount: 840.00, date: '01/10/2022'},
-                { category: 'Automated Fuel Dispensers', amount: 45.95, date: '01/10/2022' },
-                { category: 'Discount Stores', amount: 50.00, date: '01/10/2022' },
-                { category: 'Eating Places/Restaurants', amount: 45.95, date: '01/10/2022' },
-                { category: 'Econo Travel/Motor Hotel', amount: 30.00, date: '01/10/2022' },
-                { category: 'Fast Food Restaurants', amount: 5.95, date: '01/10/2022' },
-                { category: 'Grocery Stores/Supermarkets', amount: 100, date: '01/10/2022' },
-                { category: 'Music Stores/Music Instruments/Pianos and Sheet Music ', amount: 45.95, date: '01/10/2022' },
-                { category: 'Service Stations', amount: 440.00, date: '01/10/2022' },
-                { category: 'Variety Stores', amount: 45.95, date: '01/10/2022' },
-                ],
-            columns: [
-                {
-                label: "Category",
-                field: "category",
-                width: "30%",
-                headerStyles: {"background": "black", "color": "white"},
-                columnStyles: {"background": "gray", "color": "white"},
-                sortable: true,
-                },
-                {
-                label: "Amount",
-                field: "amount",
-                width: "30%",
-                headerStyles: {"background": "black", "color": "white"},
-                columnStyles: {"background": "gray", "color": "white"},
-                sortable: true,
-                },
-                {
-                label: "Date",
-                field: "date",
-                width: "30%",
-                headerStyles: {"background": "black", "color": "white"},
-                columnStyles: {"background": "gray", "color": "white"},
-                sortable: true,
-                },
-            ],
-            totalRows: 10,
-            sortable: {
-                    order: 'date',
-                    sort: 'desc'
+        methods: {
+            index_of: function(array: string[], target: string) {
+                for (let i = 0; i<array.length; i++) {
+                    if (array[i] == target) {
+                        return i
+                    }
                 }
-            });
-            const MCCsort = (offset: number, limit: number, order: string, sort: string) => {
-                //todo do something with offset and limit
-                if (sort == "asc") {
-                    MCCtable.sortable.sort = 'asc'
-                    MCCtable.rows.sort((a: Record<string, any>, b: Record<string, any>) => a[order] - b[order]); //sorts in-place
-                } else {
-                    MCCtable.sortable.sort = 'desc'
-                    MCCtable.rows.sort((a: Record<string, any>, b: Record<string, any>) => b[order] - a[order]);
+                return -1
+            },
+            random_color: function() {
+                var color = '#';
+                var letters = '0123456789ABCDEF';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
                 }
+                return color
             }
-            return { MCCtable, MCCsort }
-        }
+        },
+        computed: {
+            new_transaction_table() {
+                var new_transactions = [{merchant: "random", amount: "", transactionTime: "doozy"}] 
+                for (let i = 0; i<this.transactions_data.length; i++) {
+                    console.log(this.transactions_data[i].amount)
+                    new_transactions[i] = {
+                        merchant: this.transactions_data[i].merchant.name,
+                        amount: `-$${this.transactions_data[i].amount}`, //need to add handling deposits
+                        transactionTime: this.transactions_data[i].transactionTime
+                    }
+                }
+                this.num_transactions = this.transactions_data.length
+                return new_transactions
+            },
+            new_pie_data()
+            {
+                var new_chart_labels = []
+                var label_freq = []
+                var num_labels = 0
+                //labels & data
+                for (let i = 0; i<this.transactions_data.length; i++) {
+                    var label = this.transactions_data[i].merchant.category
+                    var amount = this.transactions_data[i].amount
+                    var index = this.index_of(new_chart_labels, label)
+                    if (index == -1) {
+                        new_chart_labels.push(label)
+                        label_freq.push(amount)
+                        num_labels = num_labels + 1
+                    }
+                    else {
+                        label_freq[index] = label_freq[index] + amount
+                    }
+                }
+                //colors
+                var colors = []
+                for (let i = 0; i<num_labels; i++) {
+                    colors[i] = this.pieColors[i]
+                }
+                const data = {
+                    labels: new_chart_labels,
+                    datasets: [{
+                        label: 'Transactions by categories',
+                        data: label_freq,
+                        backgroundColor: colors
+                    }]
+                }
+                return data
+            }
+        },
     }
 </script>
 
 <template>
     
     <main>
-        <h1 text-align="center">Budget</h1>
         <!-- getting user data  -->
-        <UserObject @send_name="n => name = n" 
-            @send_surname="s => surname = s" 
-            @send_digits="d => card_digits = d"
-            @send_date="d => exp_date = d"
-            @send_balance="b => balance = b"
-            @send_trans="t => transactions = t"
-            @send_colNames="c => colNames = c"
-            @send_num_trans="n => num_transactions = n"/>
+        <UserObject @send_name="(n: string) => name = n" 
+            @send_surname="(s: string) => surname = s" 
+            @send_digits="(d: string) => card_digits = d"
+            @send_date="(d: string) => exp_date = d"
+            @send_balance="(b: number) => balance = b"
+            @send_trans_data="t => transactions_data = t"
+            @send_num_trans="(n: number) => num_transactions = n"/>
 
-        <div class="box">
-            <p>{{name}}</p>
-            <!--<table-lite style="color:green;" :columns="colNames" :rows="transactions" :total="num_transactions"></table-lite> -->
-            <table-lite style="color:green;" :columns="MCCtable.columns" :rows="MCCtable.rows"
-            :total="MCCtable.totalRows" :sortable="MCCtable.sortable" @do-search="MCCsort"></table-lite>
-        </div>
-        <Pie
-        :chart-options="pieParams.chartOptions"
-        :chart-data="pieData"
-        :chart-id="pieParams.chartId"
-        :dataset-id-key="pieParams.datasetIdKey"
-        :width="pieParams.width"
-        :height="pieParams.height"
-        />
+        <!-- page contents -->
+        <h1 text-align="center">Activity</h1>
+
+        <!-- Figuring out how to put table and chart on same line -->
+        <!-- so far tried <hr class = "list-inline-item">, 
+            <div class="parent"> wrapping this whole section & with <div class='child inline-block-child'> for table & chart,
+                <div1>-->
+    
+        <div1>
+            <div class="box">
+                <h5 class="heading mb-3">Transactions Table</h5>
+                <table-lite style="color:green;" :columns="colNames" :rows="new_transaction_table" :total="num_transactions"></table-lite>
+            </div>
+        </div1>
+
+        <div1>
+            <div class="box">
+                <h5 class="heading mb-3">Transactions by Categories</h5>
+                <Pie
+                    :chart-options="pieParams.chartOptions"
+                    :chart-data="new_pie_data"
+                    :chart-id="pieParams.chartId"
+                    :dataset-id-key="pieParams.datasetIdKey"
+                    :width="pieParams.width"
+                    :height="pieParams.height"
+                />  
+            </div>   
+        </div1> 
+         
     </main>
     
 </template>
 
-<style>
-
+<style scoped>
+@import '../assets/main_site.css'
 </style>
