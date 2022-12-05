@@ -1,6 +1,7 @@
 <script lang="ts">
     import UserObject from '../components/UserObject.vue'   
     import TableLite from "vue3-table-lite/ts"
+    import { RouterLink, RouterView } from 'vue-router'
 
     export default {
         components: {
@@ -66,15 +67,13 @@
             @send_colNames="c => colNames = c"
             @send_num_trans="n => num_transactions = n"/>
 
-        <!-- <div class="col-md-12 block-heading-wrap"> -->
-            <!-- <h1 class="heading mb-5 text-center">Reporting Page</h1> -->
-            <h1 text-align="center">Reporting Page</h1>
-        <!-- </div> -->
+        <h1 text-align="center">Welcome, {{name}}</h1><br>
 
-        <h5>Name: {{name}} {{surname}}</h5>
-        <h5>Last 4 digits of card: {{card_digits}}</h5>
-        <h5>Expire: {{exp_date}}</h5>
-        <h5>Balance: ${{balance}}</h5>
+        <div class="box">
+            <h3><RouterLink to="/about" class="animsition-link">GiveCard Account - {{card_digits}}</RouterLink></h3><br>
+            <h5 class="heading mb-3">Expires: {{exp_date}}</h5>
+            <h5 class="heading mb-3">Balance: ${{balance}}</h5>
+        </div>
         
     </main>
     

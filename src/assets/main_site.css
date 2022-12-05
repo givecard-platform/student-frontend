@@ -74,6 +74,21 @@ section {
   display: block;
 }
 
+.div {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.div1 {
+  display: inline-block;
+}
+.inline-block-child {
+  display: inline-block;
+}
+
+.span {
+  display: inline-block;
+}
+
 body {
   margin: 0;
   font-family: "Work Sans", arial, sans-serif;
@@ -278,12 +293,18 @@ button:focus {
 button,
 input,
 optgroup,
-select,
-textarea {
+select {
+/* textarea { */
   margin: 0;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  /* trying to resize to box */
+  /* resize: auto; */
+  /* width: 100%; */
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing:border-box;
 }
 
 button,
@@ -328,6 +349,13 @@ input[type="time"] {
 textarea {
   overflow: auto;
   resize: vertical;
+  /* trying to resize textarea to box */
+  /* resize: horizontal; */
+  /* resize: auto; */
+  width: 100%;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing:border-box;
 }
 
 fieldset {
@@ -596,10 +624,10 @@ pre code {
 
 .container {
   width: 100%;
-  padding-right: 15px;
+  /* padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: auto; */
 }
 
 @media (min-width: 576px) {
@@ -25859,6 +25887,9 @@ h6 {
 
 textarea.form-control {
   height: inherit;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
 .block-icon-1 .icon span {
