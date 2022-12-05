@@ -25127,14 +25127,13 @@ a {
   -webkit-transition: 0.3s all ease;
   -o-transition: 0.3s all ease;
   transition: 0.3s all ease;
-  color: #000;
+  color: var(--green);
 }
 
 a:hover {
-  color: #000;
+  color: var(--green);
   text-decoration: none;
 }
-
 
 .templateux-footer,
 .templateux-section {

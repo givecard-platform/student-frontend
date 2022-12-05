@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import ReportingView from '../views/ReportingView.vue'
 import SpendingView from '../views/SpendingView.vue'
 import BudgetingView from '../views/BudgetingView.vue'
@@ -15,7 +14,7 @@ const router = createRouter({
       component: ReportingView
     },
     {
-      path: '/about',
+      path: '/spending',
       name: 'Spending',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route

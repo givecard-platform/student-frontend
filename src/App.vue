@@ -20,7 +20,7 @@ import './../node_modules/Bulma/CSS/bulma.css'
     <!-- <div id="site-wrap" data-animsition-in-class="fade-in" data-animsition-out-class="fade-out"> -->
       <div>
         <div class="section">
-      <div class="navbar">
+      <div class="navbar is-dark">
       <div class="container">
         <div class="navbar-brand">
         <a class="navbar-brand">
@@ -28,11 +28,19 @@ import './../node_modules/Bulma/CSS/bulma.css'
         </a>
         </div>
         <div class="navbar-menu is-active">
-          <div class="navbar-start">
-          <RouterLink to="/" class="animsition-link">Reporting</RouterLink>
-          <RouterLink to="/about" class="animsition-link">Spending</RouterLink>
-          <RouterLink to="/budget" class="animsition-link">Budgeting</RouterLink>
-          <RouterLink to="/testing_async" class="animsition-link">Testing</RouterLink>
+          <div class="navbar-start is-dark">
+          <div class="navbar-item">
+          <RouterLink to="/" class="router-link">Reporting</RouterLink>
+          </div>
+          <div class="navbar-item">
+          <RouterLink to="/spending" class="router-link">Spending</RouterLink>
+          </div>
+          <div class="navbar-item">
+          <RouterLink to="/budget" class="router-link">Budgeting</RouterLink>
+          </div>
+          <!--<div class="navbar-item">
+          <RouterLink to="/testing_async" class="router-link">Testing</RouterLink>
+          </div> -->
         </div>
         <div class="navbar-end"></div>
         </div>
@@ -52,7 +60,10 @@ import './../node_modules/Bulma/CSS/bulma.css'
 </template>
 
 <style scoped>
-  @import './assets/main_site.css'
+@import './assets/main_site.css';
+router-link {
+  color:white
+}
 /* header {
   line-height: 1.5;
   max-height: 100vh;
